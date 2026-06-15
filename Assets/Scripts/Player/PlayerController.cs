@@ -1,50 +1,66 @@
 using UnityEngine;
 
 /// <summary>
-/// Simple player controller for 3D movement using CharacterController.
+/// Visual Novel style input controller - handles dialogue navigation and UI interactions.
+/// No character movement - this is a narrative-focused game.
 /// </summary>
-[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    public float walkSpeed = 5f;
-    public float runSpeed = 8f;
-    public float gravity = -9.81f;
-    public float jumpHeight = 2f;
-
-    private CharacterController controller;
-    private Vector3 velocity;
-    private bool isGrounded;
+    private DialogueManager dialogueManager;
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
+        if (dialogueManager == null)
+        {
+            Debug.LogError("DialogueManager not found in scene!");
+        }
     }
 
     private void Update()
     {
-        isGrounded = controller.isGrounded;
+        HandleDialogueInput();
+    }
 
-        if (isGrounded && velocity.y < 0)
+    /// <summary>
+    /// Handle dialogue navigation: click to advance or skip text.
+    /// Supports both the old Input manager and the new Input System.
+    /// </summary>
+    private void HandleDialogueInput()
+    {
+        if (dialogueManager == null) return;
+
+        bool advance = false;
+
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+        // New Input System
+        if (UnityEngine.InputSystem.Mouse.current != null && UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame)
+            advance = true;
+        if (UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame)
+            advance = true;
+        if (UnityEngine.InputSystem.Keyboard.current != null && UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            velocity.y = -2f; // Small negative to keep grounded
+            OpenMenu();
+            return;
         }
-
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        // Check if running (e.g., Left Shift)
-        float speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-        controller.Move(move * speed * Time.deltaTime);
-
-        // Jump
-        if (Input.GetButtonDown("Jump") && isGrounded)
+#else
+        // Old Input Manager
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            advance = true;
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            OpenMenu();
+            return;
         }
+#endif
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        if (advance)
+            dialogueManager.AdvanceOrSkipText();
+    }
+
+    private void OpenMenu()
+    {
+        Debug.Log("Opening menu...");
+        // TODO: Implement pause menu / options menu
     }
 }

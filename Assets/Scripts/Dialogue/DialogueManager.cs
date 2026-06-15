@@ -106,6 +106,27 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called by PlayerController when player clicks/presses space.
+    /// Skips typewriter or advances to next line if text is already displayed.
+    /// </summary>
+    public void AdvanceOrSkipText()
+    {
+        if (typewriterCoroutine != null)
+        {
+            // Skip typewriter effect - show full text immediately
+            StopCoroutine(typewriterCoroutine);
+            typewriterCoroutine = null;
+            DialogueLine line = dialogueLines[currentLineIndex];
+            dialogueText.text = line.text;
+        }
+        else if (choicePanel.activeSelf == false)
+        {
+            // Text already displayed and no choices - advance to next line
+            AdvanceDialogue();
+        }
+    }
+
     private void HideChoices()
     {
         choicePanel.SetActive(false);

@@ -62,7 +62,8 @@ public class DialogueDataLoader : MonoBehaviour
     [MenuItem("Tools/Generate Dialogue ScriptableObjects from JSON")]
     public static void GenerateDialoguesFromJSON()
     {
-        string jsonPath = "Assets/Scripts/Data/DialoguesData.json";
+        // Altere para o nome exato do seu arquivo JSON:
+        string jsonPath = "Assets/Scripts/Data/Dialogue_1_1.json";
         string outputPath = "Assets/DialogueData/";
 
         if (!File.Exists(jsonPath))

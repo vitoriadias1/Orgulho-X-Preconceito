@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67bcde90fc55e5546bc7c98868d3fe59, type: 3}
+  m_Name: Dialogue_C1S1_07_Darcy
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueLine
+  speaker: Darcy
+  text: "N\xE3o sei ao certo. Mas h\xE1 algo em seu olhar que chama a aten\xE7\xE3o."
+  portrait: {fileID: 0}
+  voice: {fileID: 0}
+  choices:
+  - choiceText: "[CAN\xD4NICA] Talvez voc\xEA tenha raz\xE3o. Ela parece digna de
+      uma conversa."
+    prideChange: -0.3
+    prejudiceChange: 0
+    relationshipChanges:
+    - npcName: Elizabeth
+      changeAmount: 0.4
+  - choiceText: "[ERRADA] Ela \xE9 toler\xE1vel, mas n\xE3o suficientemente bonita
+      para me tentar."
+    prideChange: 0.5
+    prejudiceChange: 0.5
+    relationshipChanges:
+    - npcName: Elizabeth
+      changeAmount: -0.5

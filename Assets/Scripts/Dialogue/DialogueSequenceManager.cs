@@ -31,7 +31,7 @@ public class DialogueSequenceManager : MonoBehaviour
     {
         if (instance == null)
             {
-            instance = Object.FindAnyObjectByType<DialogueSequenceManager>();
+            instance = Object.FindFirstObjectByType<DialogueSequenceManager>();
             }
 
         if (instance == null)

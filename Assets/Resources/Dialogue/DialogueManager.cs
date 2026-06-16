@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// Manages dialogue display and user interaction.
@@ -9,8 +10,8 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     [Header("UI References")]
-    public Text speakerText;
-    public Text dialogueText;
+    public TextMeshProUGUI speakerText;
+    public TextMeshProUGUI dialogueText;
     public Image portraitImage;
     public GameObject choicePanel;
     public GameObject choiceButtonPrefab;

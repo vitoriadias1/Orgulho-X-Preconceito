@@ -14,10 +14,28 @@ public class DialogueSceneExample : MonoBehaviour
 
     private void Start()
     {
-        // Example: Load and play dialogue for Chapter 1, Scene 1
-        // PlayDialogueSequence(1, 1);
+    // Em vez de chamar a função direto, usamos uma Coroutine com atraso
+    StartCoroutine(IniciarDialogoComAtraso());
     }
 
+    private System.Collections.IEnumerator IniciarDialogoComAtraso()
+    {
+    // Espera 0.2 segundos para o DialogueSequenceManager se inicializar por completo
+    yield return new WaitForSeconds(0.2f);
+
+    // Agora sim, buscamos os gerenciadores de forma ultra segura
+    DialogueSequenceManager sequenceManager = Object.FindAnyObjectByType<DialogueSequenceManager>();
+
+    if (sequenceManager != null)
+        {
+        // Dispara a sequência com segurança
+        PlayDialogueSequence(1, 1);
+        }
+    else
+        {
+        Debug.LogError("O script DialogueSceneExample não encontrou o DialogueSequenceManager na cena!");
+        }
+    }
     /// <summary>
     /// Load and play a dialogue sequence
     /// </summary>

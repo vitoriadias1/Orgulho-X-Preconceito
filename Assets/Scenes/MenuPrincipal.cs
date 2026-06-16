@@ -20,14 +20,14 @@ public class MenuPrincipal : MonoBehaviour
     // 2. Método que será chamado quando o jogador clicar em "NOVO JOGO"
     public void Jogar()
     {
-        // Substitua "Jogo" pelo nome exato da cena principal do seu jogo
-        SceneManager.LoadScene("Jogo");
+    
+        SceneManager.LoadScene("SampleScene");
     }
 
     // 3. Método para fechar o jogo (pode usar no botão Sair, se criar um)
-    public void SairDoJogo()
+    /*public void SairDoJogo()
     {
         Application.Quit();
         Debug.Log("O jogo foi fechado!");
-    }
+    } */
 }

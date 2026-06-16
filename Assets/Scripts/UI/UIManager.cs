@@ -23,9 +23,12 @@ public class UIManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (prideSlider != null)
-            prideSlider.value = GameManager.Instance.pride;
-        if (prejudiceSlider != null)
-            prejudiceSlider.value = GameManager.Instance.prejudice;
+        if (GameManager.Instance != null)
+        {
+            if (prideSlider != null)
+                prideSlider.value = GameManager.Instance.pride;
+            if (prejudiceSlider != null)
+                prejudiceSlider.value = GameManager.Instance.prejudice;
+        }
     }
 }

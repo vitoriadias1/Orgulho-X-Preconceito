@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using TMPro;
 
 public class CreateDialogueUI
 {
@@ -15,8 +16,8 @@ public class CreateDialogueUI
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920, 1080);
 
-        // Ensure EventSystem exists
-        if (Object.FindObjectOfType<UnityEngine.EventSystems.EventSystem>() == null)
+        // ATUALIZADO PARA UNITY 6: FindAnyObjectByType substituindo FindObjectOfType
+        if (Object.FindAnyObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
         {
             GameObject es = new GameObject("EventSystem", typeof(UnityEngine.EventSystems.EventSystem), typeof(UnityEngine.EventSystems.StandaloneInputModule));
             EditorUtility.SetDirty(es);
@@ -34,35 +35,36 @@ public class CreateDialogueUI
         img.color = new Color(0f, 0f, 0f, 0.6f);
 
         // Speaker Text (top-left of panel)
-        GameObject speaker = new GameObject("SpeakerText", typeof(RectTransform), typeof(Text));
+        GameObject speaker = new GameObject("SpeakerText", typeof(RectTransform), typeof(TextMeshProUGUI));
         speaker.transform.SetParent(panel.transform, false);
         RectTransform srt = speaker.GetComponent<RectTransform>();
         srt.anchorMin = new Vector2(0f, 0.75f);
         srt.anchorMax = new Vector2(0.3f, 1f);
         srt.offsetMin = new Vector2(10, -10);
         srt.offsetMax = new Vector2(-10, 0);
-        Text sText = speaker.GetComponent<Text>();
-        sText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        TextMeshProUGUI sText = speaker.GetComponent<TextMeshProUGUI>();
         sText.fontSize = 24;
-        sText.alignment = TextAnchor.MiddleLeft;
+        sText.alignment = TextAlignmentOptions.MidlineLeft;
         sText.color = Color.white;
         sText.text = "Speaker";
 
         // Dialogue Text (main body)
-        GameObject dialogue = new GameObject("DialogueText", typeof(RectTransform), typeof(Text));
+        GameObject dialogue = new GameObject("DialogueText", typeof(RectTransform), typeof(TextMeshProUGUI));
         dialogue.transform.SetParent(panel.transform, false);
         RectTransform drt = dialogue.GetComponent<RectTransform>();
         drt.anchorMin = new Vector2(0f, 0f);
         drt.anchorMax = new Vector2(1f, 0.75f);
         drt.offsetMin = new Vector2(10, 10);
         drt.offsetMax = new Vector2(-10, -10);
-        Text dText = dialogue.GetComponent<Text>();
-        dText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        TextMeshProUGUI dText = dialogue.GetComponent<TextMeshProUGUI>();
         dText.fontSize = 20;
-        dText.alignment = TextAnchor.UpperLeft;
+        dText.alignment = TextAlignmentOptions.TopLeft;
         dText.color = Color.white;
-        dText.horizontalOverflow = HorizontalWrapMode.Wrap;
-        dText.verticalOverflow = VerticalWrapMode.Truncate;
+        
+        // ATUALIZADO PARA UNITY 6: textWrappingMode substituindo enableWordWrapping
+        dText.textWrappingMode = TextWrappingModes.Normal; 
+        
+        dText.overflowMode = TextOverflowModes.Truncate;
         dText.text = "Dialogue goes here...";
 
         // Portrait Image (left side of panel)
@@ -107,16 +109,17 @@ public class CreateDialogueUI
         Image bImg = button.GetComponent<Image>();
         bImg.color = new Color(1f, 1f, 1f, 0.1f);
 
-        GameObject btnText = new GameObject("Text", typeof(RectTransform), typeof(Text));
+        // Texto do botão
+        GameObject btnText = new GameObject("Text", typeof(RectTransform), typeof(TextMeshProUGUI));
         btnText.transform.SetParent(button.transform, false);
         RectTransform btRt = btnText.GetComponent<RectTransform>();
         btRt.anchorMin = Vector2.zero;
         btRt.anchorMax = Vector2.one;
         btRt.offsetMin = Vector2.zero;
         btRt.offsetMax = Vector2.zero;
-        Text bt = btnText.GetComponent<Text>();
-        bt.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        bt.alignment = TextAnchor.MiddleCenter;
+        TextMeshProUGUI bt = btnText.GetComponent<TextMeshProUGUI>();
+        bt.fontSize = 18;
+        bt.alignment = TextAlignmentOptions.Center;
         bt.color = Color.white;
         bt.text = "Choice";
 
@@ -127,8 +130,8 @@ public class CreateDialogueUI
         // Remove the runtime instance of the button from the scene
         Object.DestroyImmediate(button);
 
-        // Assign references to DialogueManager if present
-        var dm = Object.FindObjectOfType<DialogueManager>();
+        // ATUALIZADO PARA UNITY 6: FindAnyObjectByType substituindo FindObjectOfType
+        var dm = Object.FindAnyObjectByType<DialogueManager>();
         if (dm != null)
         {
             Undo.RecordObject(dm, "Assign Dialogue UI References");

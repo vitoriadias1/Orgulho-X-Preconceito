@@ -7,14 +7,12 @@ using UnityEngine;
 [System.Serializable]
 public class ChoiceData
 {
-    public string choiceText;
-    [Tooltip("Change to pride (0-1, added to current value)")]
-    [Range(-1f, 1f)]
-    public float prideChange = 0f;
-    [Tooltip("Change to prejudice (0-1, added to current value)")]
-    [Range(-1f, 1f)]
-    public float prejudiceChange = 0f;
-    public List<RelationshipChange> relationshipChanges = new List<RelationshipChange>();
+    // Precisa ser exatamente igual ao nome no JSON!
+    public string choiceText; 
+    
+    public float prideChange;
+    public float prejudiceChange;
+    public List<RelationshipChange> relationshipChanges;
 }
 
 /// <summary>

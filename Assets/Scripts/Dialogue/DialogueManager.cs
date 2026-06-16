@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages dialogue display and user interaction.
@@ -20,28 +21,40 @@ public class DialogueManager : MonoBehaviour
     private DialogueLine[] dialogueLines;
     private int currentLineIndex = 0;
     private Coroutine typewriterCoroutine;
+    private bool isDialogueActive = false; // Controla se existe uma conversa rodando
 
     private void Start()
     {
-        // Example: Load dialogue lines from Resources or set via inspector
-        // For MVP, we assume they are set in the inspector via array.
-        // Alternatively, we can load from Resources folder.
-        // We'll leave it to be set in inspector.
+        
     }
 
-    /// <summary>
-    /// Start displaying the dialogue.
-    /// </summary>
-    /// <param name="lines">Array of DialogueLine objects to display in sequence.</param>
+    private void Update()
+    {
+        // Se o diálogo estiver ativo e o jogador clicou com o botão esquerdo do mouse (Novo Sistema)
+        if (isDialogueActive && UnityEngine.InputSystem.Pointer.current != null && 
+            UnityEngine.InputSystem.Pointer.current.press.wasPressedThisFrame)
+        {
+            // Se as escolhas estiverem abertas na tela, bloqueia o clique para não pular o texto
+            if (choicePanel.activeSelf) return;
+
+            AdvanceOrSkipText();
+        }
+    }
+
     public void StartDialogue(DialogueLine[] lines)
     {
         dialogueLines = lines;
         currentLineIndex = 0;
+        isDialogueActive = true; // Ativa o controle de cliques
         DisplayLine();
     }
 
     private void DisplayLine()
     {
+
+        // Cancelar qualquer agendamento de avanço automático residual por segurança
+        CancelInvoke(nameof(AdvanceDialogue));
+
         if (currentLineIndex >= dialogueLines.Length)
         {
             EndDialogue();
@@ -68,8 +81,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             HideChoices();
-            // Auto-advance after a short delay if no choices
-            Invoke(nameof(AdvanceDialogue), 2f);
+
         }
     }
 
@@ -79,7 +91,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char c in text.ToCharArray())
         {
             dialogueText.text += c;
-            yield return new WaitForSeconds(0.05f); // Adjust speed as needed
+            yield return new WaitForSeconds(0.04f); // Adjust speed as needed
         }
         typewriterCoroutine = null;
     }
@@ -96,14 +108,23 @@ public class DialogueManager : MonoBehaviour
         // Instantiate buttons for each choice
         foreach (ChoiceData choice in choices)
         {
-            GameObject buttonObj = Instantiate(choiceButtonPrefab, choiceButtonContainer);
-            Text buttonText = buttonObj.GetComponentInChildren<Text>();
+            // Instancia o modelo de botão (Prefab) dentro do container
+            GameObject btnObj = Instantiate(choiceButtonPrefab, choiceButtonContainer);
+        
+            // Pega o componente de texto do botão e coloca o texto correto do JSON
+            TextMeshProUGUI buttonText = btnObj.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText != null)
-                buttonText.text = choice.choiceText;
+                {
+            // Usando 'choiceText' que bate com o seu JSON!
+                buttonText.text = choice.choiceText; 
+                }
 
-            // Add listener to handle choice selection
-            Button btn = buttonObj.GetComponent<Button>();
-            btn.onClick.AddListener(() => OnChoiceSelected(choice));
+            // ADICIONADO: Configura o botão para acionar a função OnChoiceSelected ao ser clicado
+            Button btnComponent = btnObj.GetComponent<Button>();
+            if (btnComponent != null)
+            {
+                btnComponent.onClick.AddListener(() => OnChoiceSelected(choice));
+            }
         }
     }
 
@@ -134,14 +155,15 @@ public class DialogueManager : MonoBehaviour
     }
 
     private void OnChoiceSelected(ChoiceData choice)
-    {
-        HideChoices();
-        // Apply the choice effects to GameManager
-        GameManager.Instance.ApplyChoice(choice);
-        // Advance to next line
-        AdvanceDialogue();
-    }
+        {
+            HideChoices();
+    
+            // Apply the choice effects to GameManager
+            GameManager.Instance.ApplyChoice(choice);
 
+            // Advance to next line
+            AdvanceDialogue();
+        }
     private void AdvanceDialogue()
     {
         currentLineIndex++;
@@ -151,11 +173,15 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         // Hide dialogue UI
+        isDialogueActive = false; // Desativa o controle de cliques pois acabou
         speakerText.text = "";
         dialogueText.text = "";
         portraitImage.sprite = null;
         HideChoices();
         // Optionally, trigger next event (e.g., load next scene, enable player movement)
         Debug.Log("Dialogue ended.");
+
+        // 2. LINHA MÁGICA: Carrega a nova cena de encerramento automaticamente!
+        SceneManager.LoadScene("Final");
     }
 }

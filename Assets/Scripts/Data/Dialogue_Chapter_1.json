@@ -1,0 +1,178 @@
+{
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "chapterName": "O Baile de Meryton",
+      "scenes": [
+        {
+          "sceneNumber": 1,
+          "sceneName": "Chegada ao Baile",
+          "dialogueLines": [
+            {
+              "dialogueID": 1,
+              "speaker": "Narrativa",
+              "text": "Outono de 1812. A pequena cidade de Meryton recebe novos visitantes. O salão está iluminado por velas, e a música ecoa entre risos e conversas. Todos desejam conhecer o rico Sr. Bingley e seu misterioso amigo, Sr. Darcy.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 2,
+              "speaker": "Sra. Bennet",
+              "text": "Minhas filhas, comportem-se como verdadeiras damas. Esta noite pode mudar seus destinos.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 3,
+              "speaker": "Jane",
+              "text": "Não se preocupe, mamãe. Estamos preparadas.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 4,
+              "speaker": "Elizabeth",
+              "text": "Ou talvez seja apenas uma noite de dança e boa música.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 5,
+              "speaker": "Sra. Bennet",
+              "text": "Lizzy, por favor. Não espante os pretendentes com esse seu humor.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 6,
+              "speaker": "Narrativa",
+              "text": "Do outro lado do salão, Bingley e Darcy entram pela porta principal. Bingley irradia entusiasmo; Darcy, contenção. A diferença entre os dois é imediata e visível a qualquer observador atento.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 7,
+              "speaker": "Bingley",
+              "text": "Veja só, Darcy! O salão está cheio. Vamos nos divertir esta noite.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 8,
+              "speaker": "Darcy",
+              "text": "Há muitas pessoas que não conheço.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 9,
+              "speaker": "Bingley",
+              "text": "É justamente esse o propósito de um baile, meu caro. Conhecer pessoas.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 10,
+              "speaker": "Darcy",
+              "text": "Não compartilho do seu entusiasmo por encontros fortuitos.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "sceneNumber": 2,
+          "sceneName": "Darcy Observa Elizabeth",
+          "dialogueLines": [
+            {
+              "dialogueID": 11,
+              "speaker": "Narrativa",
+              "text": "Durante uma quadrilha, Bingley aponta para Elizabeth, que conversa animadamente com Charlotte Lucas. Os olhos de Darcy param sobre ela por um instante mais longo do que planejado.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 12,
+              "speaker": "Bingley",
+              "text": "Quem é aquela jovem de vestido azul? Parece bastante inteligente.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 13,
+              "speaker": "Darcy",
+              "text": "Não sei ao certo. Mas há algo em seu olhar que chama a atenção.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 14,
+              "speaker": "Bingley",
+              "text": "Venha, dance com ela. Será agradável.",
+              "portrait": null,
+              "choices": [
+                {
+                  "choiceText": "[CANÔNICA] Talvez você tenha razão. Ela parece digna de uma conversa.",
+                  "prideChange": -0.3,
+                  "prejudiceChange": 0,
+                  "relationshipChanges": [
+                    {
+                      "npcName": "Elizabeth",
+                      "changeAmount": 0.4
+                    }
+                  ]
+                },
+                {
+                  "choiceText": "[ERRADA] Ela é tolerável, mas não suficientemente bonita para me tentar.",
+                  "prideChange": 0.5,
+                  "prejudiceChange": 0.5,
+                  "relationshipChanges": [
+                    {
+                      "npcName": "Elizabeth",
+                      "changeAmount": -0.5
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "dialogueID": 15,
+              "speaker": "Narrativa",
+              "text": "Ao aceitar dançar com Elizabeth, Darcy descobre que ela tem um espírito que não encontra nos salões de Londres. A conversa é curta, mas ficará com ele mais tempo do que previu.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 16,
+              "speaker": "Elizabeth",
+              "text": "O senhor é muito silencioso para um homem que acabou de aceitar dançar.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 17,
+              "speaker": "Darcy",
+              "text": "Tenho o costume de pensar antes de falar. Considero isso uma virtude.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 18,
+              "speaker": "Elizabeth",
+              "text": "E eu tenho o costume de falar para descobrir o que penso. Talvez ambos tenhamos algo a aprender.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 19,
+              "speaker": "Darcy",
+              "text": "...Talvez.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

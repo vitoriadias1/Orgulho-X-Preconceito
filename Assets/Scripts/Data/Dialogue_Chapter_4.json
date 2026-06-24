@@ -1,0 +1,140 @@
+{
+  "chapters": [
+    {
+      "chapterNumber": 4,
+      "chapterName": "Pemberley",
+      "scenes": [
+        {
+          "sceneNumber": 1,
+          "sceneName": "Chegada a Pemberley",
+          "dialogueLines": [
+            {
+              "dialogueID": 40,
+              "speaker": "Narrativa",
+              "text": "Os jardins parecem intermináveis. A mansão surge entre as árvores como algo saído de um sonho. Elizabeth para por um instante. Não é a riqueza que a impressiona. É pensar que aquele lugar representa Darcy.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 41,
+              "speaker": "Sra. Gardiner",
+              "text": "É uma propriedade magnífica. Tudo aqui revela cuidado e bom gosto.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 42,
+              "speaker": "Sr. Gardiner",
+              "text": "Seu proprietário deve possuir grande senso de responsabilidade.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 43,
+              "speaker": "Elizabeth",
+              "text": "Talvez possua. Mais do que eu soube reconhecer.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 44,
+              "speaker": "Sra. Gardiner",
+              "text": "Você parece pensativa, Lizzy.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 45,
+              "speaker": "Elizabeth",
+              "text": "Estou apenas percebendo que algumas pessoas são mais difíceis de compreender do que imaginei — e que eu as julgava de um lugar muito raso.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "sceneNumber": 2,
+          "sceneName": "A Governanta",
+          "dialogueLines": [
+            {
+              "dialogueID": 46,
+              "speaker": "Narrativa",
+              "text": "Cada elogio feito pela governanta atinge Elizabeth como uma pequena acusação silenciosa. Ela desejava encontrar defeitos. Em vez disso, encontra evidências repetidas de bondade.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 47,
+              "speaker": "Sra. Reynolds",
+              "text": "O Sr. Darcy sempre se preocupa com os empregados e jamais disse uma palavra cruel a nenhum de nós.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 48,
+              "speaker": "Elizabeth",
+              "text": "Ele é próximo da família?",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 49,
+              "speaker": "Sra. Reynolds",
+              "text": "Extremamente. Especialmente de sua irmã. Nunca vi irmão mais dedicado.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 50,
+              "speaker": "Narrativa",
+              "text": "Elizabeth ouve e sente o peso de cada palavra. O orgulhoso Sr. Darcy que ela construiu na imaginação não existe aqui. E ela começa a se perguntar onde ele existia, afinal.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "sceneNumber": 3,
+          "sceneName": "O Encontro",
+          "dialogueLines": [
+            {
+              "dialogueID": 51,
+              "speaker": "Narrativa",
+              "text": "Quando Darcy surge no caminho de pedras, Elizabeth sente uma reação inesperada. Não é raiva. Não é desconforto. É nervosismo — e algo que reconhece como verdadeiro.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 52,
+              "speaker": "Darcy",
+              "text": "Srta. Bennet. Não esperava encontrá-la aqui. Espero que minha presença não torne sua visita desagradável.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 53,
+              "speaker": "Elizabeth",
+              "text": "Ao contrário. Creio que não poderia ser mais... oportuna.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 54,
+              "speaker": "Darcy",
+              "text": "Fico satisfeito em ouvir isso.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 55,
+              "speaker": "Narrativa",
+              "text": "Os dois sorriem discretamente. É a primeira conversa em que nenhum deles parece estar se defendendo de algo. A armadura caiu de ambos os lados.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

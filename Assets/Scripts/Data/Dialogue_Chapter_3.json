@@ -1,0 +1,137 @@
+{
+  "chapters": [
+    {
+      "chapterNumber": 3,
+      "chapterName": "A Primeira Proposta",
+      "scenes": [
+        {
+          "sceneNumber": 1,
+          "sceneName": "Biblioteca de Rosings Park",
+          "dialogueLines": [
+            {
+              "dialogueID": 26,
+              "speaker": "Narrativa",
+              "text": "A biblioteca de Rosings Park cheira a couro envelhecido e papel antigo. A chuva fina contra as janelas torna o ambiente íntimo demais para dois conhecidos que insistem em fingir indiferença.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 27,
+              "speaker": "Darcy",
+              "text": "O coronel costuma dizer que uma boa biblioteca revela mais sobre uma pessoa do que uma sala de recepção.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 28,
+              "speaker": "Elizabeth",
+              "text": "Então espero que os livros daqui tenham senso de humor. As salas de recepção de Rosings parecem levar a si mesmas muito a sério.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 29,
+              "speaker": "Darcy",
+              "text": "Poucos ousariam dizer isso em voz alta.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 30,
+              "speaker": "Elizabeth",
+              "text": "Poucos têm algo a ganhar sendo sinceros.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 31,
+              "speaker": "Darcy",
+              "text": "E a senhora? Ganha algo?",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 32,
+              "speaker": "Elizabeth",
+              "text": "Paz de espírito.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 33,
+              "speaker": "Narrativa",
+              "text": "Darcy a observa por um momento mais longo do que a etiqueta recomenda. Não há deboche no olhar — apenas atenção genuína. O peso daquele silêncio não escapa a nenhum dos dois.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 34,
+              "speaker": "Darcy",
+              "text": "É raro encontrar alguém que fale sem calcular a impressão causada.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 35,
+              "speaker": "Elizabeth",
+              "text": "O senhor calcula a sua o tempo todo.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 36,
+              "speaker": "Darcy",
+              "text": "Fui educado para isso.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 37,
+              "speaker": "Elizabeth",
+              "text": "E nunca desejou ser educado para outra coisa?",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 38,
+              "speaker": "Narrativa",
+              "text": "Ele hesita. A pergunta o atinge com uma precisão desconfortável. Ninguém nunca lhe havia perguntado isso de forma tão direta e sem crueldade.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 39,
+              "speaker": "Darcy",
+              "text": "Talvez esteja desejando agora.",
+              "portrait": null,
+              "choices": [
+                {
+                  "choiceText": "[CANÔNICA] Então comece dizendo o que realmente pensa. Sem o peso das expectativas.",
+                  "prideChange": -0.2,
+                  "prejudiceChange": 0,
+                  "relationshipChanges": [
+                    {
+                      "npcName": "Darcy",
+                      "changeAmount": 0.3
+                    }
+                  ]
+                },
+                {
+                  "choiceText": "[FRIA] Não creio que o senhor mude tão facilmente.",
+                  "prideChange": 0,
+                  "prejudiceChange": 0.2,
+                  "relationshipChanges": [
+                    {
+                      "npcName": "Darcy",
+                      "changeAmount": -0.2
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

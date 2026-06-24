@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67bcde90fc55e5546bc7c98868d3fe59, type: 3}
+  m_Name: Dialogue_C8S2_05_Narrativa
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueLine
+  dialogueID: 0
+  speaker: Narrativa
+  text: "O vento move suavemente as \xE1rvores. O sil\xEAncio entre eles j\xE1 n\xE3o
+    \xE9 desconfort\xE1vel \u2014 \xE9 familiar. Como se ambos soubessem que este
+    momento chegaria."
+  portrait: {fileID: 0}
+  voice: {fileID: 0}
+  choices: []

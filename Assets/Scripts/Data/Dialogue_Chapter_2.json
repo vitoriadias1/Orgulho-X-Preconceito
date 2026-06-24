@@ -1,0 +1,76 @@
+{
+  "chapters": [
+    {
+      "chapterNumber": 2,
+      "chapterName": "Cartas e Rumores",
+      "scenes": [
+        {
+          "sceneNumber": 1,
+          "sceneName": "O Encontro com Wickham",
+          "dialogueLines": [
+            {
+              "dialogueID": 20,
+              "speaker": "Narrativa",
+              "text": "Durante uma caminhada por Meryton, Elizabeth encontra o oficial George Wickham. Seu sorriso amigável e farda imponente contrastam com a postura reservada de Darcy.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 21,
+              "speaker": "Wickham",
+              "text": "Srta. Bennet, é sempre um prazer encontrá-la nas ruas de Meryton.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 22,
+              "speaker": "Elizabeth",
+              "text": "O prazer é meu, Sr. Wickham. Como tem passado?",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 23,
+              "speaker": "Wickham",
+              "text": "Bem, obrigado. Embora meu passado carregue algumas sombras que preferiria esquecer.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 24,
+              "speaker": "Elizabeth",
+              "text": "Sombras? Relacionadas ao Sr. Darcy, talvez?",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 25,
+              "speaker": "Wickham",
+              "text": "Infelizmente sim. Meu pai serviu a família Darcy por toda a vida. E uma promessa que me foi feita... foi quebrada.",
+              "portrait": null,
+              "choices": [
+                {
+                  "choiceText": "[SÁBIA] Gostaria de ouvir ambos os lados antes de concluir qualquer coisa.",
+                  "prideChange": 0,
+                  "prejudiceChange": -0.2,
+                  "relationshipChanges": []
+                },
+                {
+                  "choiceText": "[IMPULSIVA] Que injustiça! O Sr. Darcy deve ter agido com crueldade.",
+                  "prideChange": 0,
+                  "prejudiceChange": 0.3,
+                  "relationshipChanges": [
+                    {
+                      "npcName": "Darcy",
+                      "changeAmount": -0.2
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

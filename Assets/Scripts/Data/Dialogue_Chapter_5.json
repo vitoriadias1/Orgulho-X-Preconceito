@@ -1,0 +1,119 @@
+{
+  "chapters": [
+    {
+      "chapterNumber": 5,
+      "chapterName": "O Escândalo de Lydia",
+      "scenes": [
+        {
+          "sceneNumber": 1,
+          "sceneName": "A Carta de Jane",
+          "dialogueLines": [
+            {
+              "dialogueID": 56,
+              "speaker": "Jane",
+              "text": "Lydia fugiu com Wickham. Papai foi a Londres procurá-los. Elizabeth... não sabemos o que vai acontecer.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 57,
+              "speaker": "Elizabeth",
+              "text": "Não... Wickham. Eu deveria ter avisado. Eu sabia e não falei.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 58,
+              "speaker": "Jane",
+              "text": "Você sabia algo sobre ele?",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 59,
+              "speaker": "Narrativa",
+              "text": "Pela primeira vez, Elizabeth não pensa apenas em sua própria dor. Pensa em Darcy. Em tudo que ele lhe revelou na carta. E percebe com clareza que deveria ter acreditado nele.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "sceneNumber": 2,
+          "sceneName": "Elizabeth Confessa a Verdade",
+          "dialogueLines": [
+            {
+              "dialogueID": 60,
+              "speaker": "Elizabeth",
+              "text": "Existe algo que preciso contar, Jane. O Sr. Darcy me alertou sobre Wickham. Meses atrás, ele me escreveu a verdade.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 61,
+              "speaker": "Jane",
+              "text": "E você acreditou nele?",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 62,
+              "speaker": "Elizabeth",
+              "text": "...não. Não acreditei. E isso me envergonha mais do que qualquer outra coisa que já fiz.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "sceneNumber": 3,
+          "sceneName": "Darcy Descobre o Escândalo",
+          "dialogueLines": [
+            {
+              "dialogueID": 63,
+              "speaker": "Narrativa",
+              "text": "Quando Elizabeth encontra Darcy novamente, carrega o peso da vergonha. Não apenas pelo escândalo. Mas porque agora conhece o homem que ele realmente é.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 64,
+              "speaker": "Elizabeth",
+              "text": "Minha família está em grave situação. Lydia... e Wickham. Eu sei que o senhor tem razões para não se importar com nenhum de nós.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 65,
+              "speaker": "Darcy",
+              "text": "Não diga isso. Não é assim que me sinto.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 66,
+              "speaker": "Elizabeth",
+              "text": "Não há solução à vista.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 67,
+              "speaker": "Darcy",
+              "text": "Enquanto houver algo que eu possa fazer, existe esperança. E há algo que eu posso fazer.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 68,
+              "speaker": "Narrativa",
+              "text": "O olhar de Darcy não contém julgamento. Apenas preocupação genuína. E naquele instante Elizabeth compreende algo assustador: ela o ama.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

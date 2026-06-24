@@ -62,94 +62,118 @@ public class DialogueDataLoader : MonoBehaviour
     [MenuItem("Tools/Generate Dialogue ScriptableObjects from JSON")]
     public static void GenerateDialoguesFromJSON()
     {
-        // Altere para o nome exato do seu arquivo JSON:
-        string jsonPath = "Assets/Scripts/Data/Dialogue_1_1.json";
-        string outputPath = "Assets/DialogueData/";
+        // 1. Caminho da pasta onde você colocou os múltiplos arquivos JSON
+        string jsonFolderPath = "Assets/Scripts/Data/";
+        string baseOutputPath = "Assets/DialogueData/";
 
-        if (!File.Exists(jsonPath))
+        if (!Directory.Exists(jsonFolderPath))
         {
-            Debug.LogError($"JSON file not found at {jsonPath}");
+            Debug.LogError($"JSON folder not found at {jsonFolderPath}. Certifique-se de que a pasta existe!");
             return;
         }
 
-        // Create output directory if it doesn't exist
-        if (!Directory.Exists(outputPath))
-        {
-            Directory.CreateDirectory(outputPath);
-        }
+        // 2. Busca AUTOMATICAMENTE por todos os arquivos .json dentro daquela pasta
+        string[] jsonFiles = Directory.GetFiles(jsonFolderPath, "*.json");
 
-        string json = File.ReadAllText(jsonPath);
-        DialogueDataWrapper data = JsonUtility.FromJson<DialogueDataWrapper>(json);
-
-        if (data == null || data.chapters == null)
+        if (jsonFiles.Length == 0)
         {
-            Debug.LogError("Failed to parse JSON or no chapters found");
+            Debug.LogWarning($"Nenhum arquivo JSON encontrado em {jsonFolderPath}");
             return;
         }
 
-        int dialogueCounter = 0;
+        int totalLinesGenerated = 0;
+        int filesProcessed = 0;
 
-        foreach (var chapter in data.chapters)
+        // 3. Loop que vai ler arquivo por arquivo encontrado
+        foreach (string jsonPath in jsonFiles)
         {
-            foreach (var scene in chapter.scenes)
+            string json = File.ReadAllText(jsonPath);
+            DialogueDataWrapper data = JsonUtility.FromJson<DialogueDataWrapper>(json);
+
+            if (data == null || data.chapters == null)
             {
-                foreach (var lineData in scene.dialogueLines)
+                Debug.LogWarning($"Falha ao decodificar ou arquivo vazio: {jsonPath}");
+                continue;
+            }
+
+            filesProcessed++;
+
+            foreach (var chapter in data.chapters)
+            {
+                // 4. Cria uma SUBPASTA dedicada para este capítulo (Ex: Assets/DialogueData/Chapter_1)
+                string chapterOutputPath = Path.Combine(baseOutputPath, $"Chapter_{chapter.chapterNumber}");
+                if (!Directory.Exists(chapterOutputPath))
                 {
-                    // Create DialogueLine ScriptableObject
-                    DialogueLine dialogueLine = ScriptableObject.CreateInstance<DialogueLine>();
-                    dialogueLine.speaker = lineData.speaker;
-                    dialogueLine.text = lineData.text;
-                    dialogueLine.portrait = null; // Portrait loading would need sprite references
-                    dialogueLine.voice = null; // Voice audio loading would need audio references
+                    Directory.CreateDirectory(chapterOutputPath);
+                }
 
-                    // Convert choices
-                    if (lineData.choices != null && lineData.choices.Length > 0)
+                // O contador reseta a cada capítulo/arquivo para manter os nomes padronizados (00, 01, 02...)
+                int dialogueCounter = 0; 
+
+                foreach (var scene in chapter.scenes)
+                {
+                    foreach (var lineData in scene.dialogueLines)
                     {
-                        dialogueLine.choices = new ChoiceData[lineData.choices.Length];
+                        // Create DialogueLine ScriptableObject
+                        DialogueLine dialogueLine = ScriptableObject.CreateInstance<DialogueLine>();
+                        dialogueLine.speaker = lineData.speaker;
+                        dialogueLine.text = lineData.text;
+                        dialogueLine.portrait = null; 
+                        dialogueLine.voice = null; 
 
-                        for (int i = 0; i < lineData.choices.Length; i++)
+                        // Convert choices
+                        if (lineData.choices != null && lineData.choices.Length > 0)
                         {
-                            var choiceWrapper = lineData.choices[i];
-                            ChoiceData choice = new ChoiceData
-                            {
-                                choiceText = choiceWrapper.choiceText,
-                                prideChange = choiceWrapper.prideChange,
-                                prejudiceChange = choiceWrapper.prejudiceChange,
-                                relationshipChanges = new List<RelationshipChange>()
-                            };
+                            dialogueLine.choices = new ChoiceData[lineData.choices.Length];
 
-                            if (choiceWrapper.relationshipChanges != null)
+                            for (int i = 0; i < lineData.choices.Length; i++)
                             {
-                                foreach (var relChange in choiceWrapper.relationshipChanges)
+                                var choiceWrapper = lineData.choices[i];
+                                ChoiceData choice = new ChoiceData
                                 {
-                                    choice.relationshipChanges.Add(new RelationshipChange
+                                    choiceText = choiceWrapper.choiceText,
+                                    prideChange = choiceWrapper.prideChange,
+                                    prejudiceChange = choiceWrapper.prejudiceChange,
+                                    relationshipChanges = new List<RelationshipChange>()
+                                };
+
+                                if (choiceWrapper.relationshipChanges != null)
+                                {
+                                    foreach (var relChange in choiceWrapper.relationshipChanges)
                                     {
-                                        npcName = relChange.npcName,
-                                        changeAmount = relChange.changeAmount
-                                    });
+                                        choice.relationshipChanges.Add(new RelationshipChange
+                                        {
+                                            npcName = relChange.npcName,
+                                            changeAmount = relChange.changeAmount
+                                        });
+                                    }
                                 }
+
+                                dialogueLine.choices[i] = choice;
                             }
-
-                            dialogueLine.choices[i] = choice;
                         }
-                    }
-                    else
-                    {
-                        dialogueLine.choices = new ChoiceData[0];
-                    }
+                        else
+                        {
+                            dialogueLine.choices = new ChoiceData[0];
+                        }
 
-                    // Save as asset
-                    string fileName = $"Dialogue_C{chapter.chapterNumber}S{scene.sceneNumber}_{dialogueCounter:00}_{CleanFileName(lineData.speaker)}.asset";
-                    string filePath = Path.Combine(outputPath, fileName);
-                    AssetDatabase.CreateAsset(dialogueLine, filePath);
-                    dialogueCounter++;
+                        // 5. Salva o asset dentro da subpasta do capítulo correspondente
+                        string fileName = $"Dialogue_C{chapter.chapterNumber}S{scene.sceneNumber}_{dialogueCounter:00}_{CleanFileName(lineData.speaker)}.asset";
+                        string filePath = Path.Combine(chapterOutputPath, fileName);
+                        
+                        AssetDatabase.CreateAsset(dialogueLine, filePath);
+                        dialogueCounter++;
+                        totalLinesGenerated++;
+                    }
                 }
             }
         }
 
+        // Atualiza a aba Project da Unity para exibir os novos arquivos
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-        Debug.Log($"✓ Generated {dialogueCounter} dialogue lines from JSON!");
+        
+        Debug.Log($"<color=green><b>✓ SUCESSO!</b></color> Processou {filesProcessed} arquivos JSON e gerou {totalLinesGenerated} linhas de diálogo organizadas em subpastas!");
     }
 
     private static string CleanFileName(string fileName)

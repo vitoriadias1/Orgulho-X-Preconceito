@@ -19,24 +19,26 @@ public class MenuManager : MonoBehaviour
 
     public void NovoJogo()
     {
-        // 1. IMPORTANTE: Reseta os valores para o padrão exato de 50 de Orgulho e Preconceito
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.pride = 50f;
-            GameManager.Instance.prejudice = 50f;
-            GameManager.Instance.savedDialogueIndex = 0; // Reseta a linha do diálogo para o começo
-            GameManager.Instance.relationships.Clear();  // Limpa o dicionário de afeição com NPCs
-        }
-
-        // 2. OPCIONAL (Altamente recomendado): Deleta o arquivo físico do computador 
-        // para que o botão "Continuar" volte a ficar cinza até o jogador salvar de novo.
+        // Deleta o arquivo físico para garantir que não haja trapaça de carregamento
         string savePath = System.IO.Path.Combine(Application.persistentDataPath, "savegame.json");
         if (System.IO.File.Exists(savePath))
         {
             System.IO.File.Delete(savePath);
         }
 
-        // 3. Carrega a cena inicial da história do zero
+        if (GameManager.Instance != null)
+        {
+            // Força os valores limpos no Singleton que está na memória
+            GameManager.Instance.pride = 50f;
+            GameManager.Instance.prejudice = 50f;
+            GameManager.Instance.savedDialogueIndex = 0;
+            GameManager.Instance.relationships.Clear();
+
+            // precisamos avisar para ela que os pontos voltaram para 50!
+            GameManager.Instance.OnStatsChanged?.Invoke(50f, 50f);
+        }
+
+        // Carrega a cena do jogo
         SceneManager.LoadScene("SampleScene"); 
     }
 

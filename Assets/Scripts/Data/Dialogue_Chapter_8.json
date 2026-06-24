@@ -1,0 +1,150 @@
+{
+  "chapters": [
+    {
+      "chapterNumber": 8,
+      "chapterName": "Reconciliação",
+      "scenes": [
+        {
+          "sceneNumber": 1,
+          "sceneName": "Conversa com Jane",
+          "dialogueLines": [
+            {
+              "dialogueID": 69,
+              "speaker": "Jane",
+              "text": "Você fala muito do Sr. Darcy ultimamente, Lizzy. Mais do que percebe.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 70,
+              "speaker": "Elizabeth",
+              "text": "Falo? É possível.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 71,
+              "speaker": "Jane",
+              "text": "E se você tivesse sido injusta com ele?",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 72,
+              "speaker": "Elizabeth",
+              "text": "Então farei o que sempre fiz quando descubro um erro.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 73,
+              "speaker": "Jane",
+              "text": "Corrija-o.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        },
+        {
+          "sceneNumber": 2,
+          "sceneName": "A Segunda Proposta",
+          "dialogueLines": [
+            {
+              "dialogueID": 74,
+              "speaker": "Narrativa",
+              "text": "O vento move suavemente as árvores. O silêncio entre eles já não é desconfortável — é familiar. Como se ambos soubessem que este momento chegaria.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 75,
+              "speaker": "Darcy",
+              "text": "Há algo que preciso saber. Se seus sentimentos continuam os mesmos que tinham quando me rejeitou, não falarei mais sobre este assunto. Mas se houver qualquer possibilidade...",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 76,
+              "speaker": "Narrativa",
+              "text": "Elizabeth observa o homem diante dela. Não vê mais orgulho. Vê vulnerabilidade.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 77,
+              "speaker": "Elizabeth",
+              "text": "Meus sentimentos não são os mesmos.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 78,
+              "speaker": "Darcy",
+              "text": "...",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 79,
+              "speaker": "Elizabeth",
+              "text": "Eles mudaram completamente. Eu o julguei sem conhecê-lo. Construí uma imagem e me recusei a enxergar além dela.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 80,
+              "speaker": "Darcy",
+              "text": "E eu tornei fácil que me julgassem. Fui orgulhoso onde devia ser gentil, reservado onde devia ser honesto.",
+              "portrait": null,
+              "choices": [
+                {
+                  "choiceText": "[CANÔNICA] Talvez tenhamos errado igualmente. E talvez possamos aprender juntos.",
+                  "prideChange": -0.5,
+                  "prejudiceChange": -0.5,
+                  "relationshipChanges": [
+                    {
+                      "npcName": "Darcy",
+                      "changeAmount": 0.5
+                    }
+                  ]
+                },
+                {
+                  "choiceText": "[ERRADA] Acho que ainda preciso de tempo para perdoar o passado.",
+                  "prideChange": 0.2,
+                  "prejudiceChange": 0.2,
+                  "relationshipChanges": [
+                    {
+                      "npcName": "Darcy",
+                      "changeAmount": -0.3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "dialogueID": 81,
+              "speaker": "Elizabeth",
+              "text": "Talvez tenhamos errado igualmente.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 82,
+              "speaker": "Darcy",
+              "text": "Talvez tenhamos aprendido igualmente.",
+              "portrait": null,
+              "choices": []
+            },
+            {
+              "dialogueID": 83,
+              "speaker": "Narrativa",
+              "text": "E, pela primeira vez desde a biblioteca de Rosings, nenhum dos dois precisa esconder o que sente. O orgulho cedeu lugar à coragem; o preconceito, à verdade.",
+              "portrait": null,
+              "choices": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

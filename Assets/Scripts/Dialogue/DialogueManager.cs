@@ -17,6 +17,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject choicePanel;
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
+    // Uma lista que vai guardar todas as falas do capítulo atual nesta cena
+    public System.Collections.Generic.List<DialogueLine> chapterLines;
 
     private DialogueLine[] dialogueLines;
     private int currentLineIndex = 0;
@@ -25,7 +27,21 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        
+        // Se o savedDialogueIndex for 0, significa que é um JOGO NOVO legítimo
+        if (GameManager.Instance.savedDialogueIndex == 0)
+        {
+            GameManager.Instance.pride = 50f;
+            GameManager.Instance.prejudice = 50f;
+            GameManager.Instance.relationships.Clear();
+            
+            // Atualiza o texto/barra da UI para mostrar 50 de verdade
+            GameManager.Instance.OnStatsChanged?.Invoke(50f, 50f);
+        }
+
+        if (chapterLines != null && chapterLines.Count > 0)
+        {
+            StartDialogue(chapterLines.ToArray());
+        }
     }
 
     private void Update()
@@ -44,7 +60,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueLine[] lines)
     {
         dialogueLines = lines;
-        currentLineIndex = 0;
+        currentLineIndex = GameManager.Instance.savedDialogueIndex;
         isDialogueActive = true; // Ativa o controle de cliques
         DisplayLine();
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; 
-using System.IO; // 🔥 ADICIONADO: Necessário para usar Path, File.Exists e File.ReadAllText!
+using System.IO; 
 
 public class MenuManager : MonoBehaviour
 {
@@ -43,24 +43,24 @@ public class MenuManager : MonoBehaviour
 
         if (File.Exists(savePath))
         {
-            // 1. Lê o texto bruto do arquivo de save
-            string jsonText = File.ReadAllText(savePath);
-
-            // 2. Converte temporariamente para ler o nome da cena guardada
-            // Usamos 'GameManager.DadosDoSave' porque a classe está declarada dentro do GameManager!
-            GameManager.DadosDoSave dados = JsonUtility.FromJson<GameManager.DadosDoSave>(jsonText);
-
-            // 3. Valida se o nome da cena não veio vazio por segurança
-            if (dados != null && !string.IsNullOrEmpty(dados.cenaSalva))
+            // 1. 🔥 CORRIGIDO: O SaveSystem cuida de ler o arquivo e carregar os dados para a memória
+            if (SaveSystem.LoadGame())
             {
-                Debug.Log($"💾 Carregando save! Indo para a cena: {dados.cenaSalva}");
-                SceneManager.LoadScene(dados.cenaSalva);
-            }
-            else
-            {
-                // Caso o arquivo exista mas não tenha o nome da cena, vai para a padrão
-                Debug.LogWarning("⚠️ Arquivo de save encontrado, mas sem nome de cena. Indo para a SampleScene.");
-                SceneManager.LoadScene("SampleScene");
+                // 2. 🔥 Buscamos o nome exato da cena salva de forma limpa através do SaveSystem
+                string cenaSalva = SaveSystem.ObterCenaSalva();
+
+                // 3. Valida se o nome da cena não veio vazio por segurança
+                if (!string.IsNullOrEmpty(cenaSalva))
+                {
+                    Debug.Log($"💾 Carregando save! Indo para a cena: {cenaSalva}");
+                    SceneManager.LoadScene(cenaSalva);
+                }
+                else
+                {
+                    // Caso o arquivo exista mas não tenha o nome da cena, vai para a padrão
+                    Debug.LogWarning("⚠️ Arquivo de save encontrado, mas sem nome de cena. Indo para a SampleScene.");
+                    SceneManager.LoadScene("SampleScene");
+                }
             }
         }
         else

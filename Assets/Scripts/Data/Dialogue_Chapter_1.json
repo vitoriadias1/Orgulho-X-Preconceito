@@ -124,8 +124,8 @@
                 },
                 {
                   "choiceText": "[ERRADA] Ela é tolerável, mas não suficientemente bonita para me tentar.",
-                  "prideChange": 0.5,
-                  "prejudiceChange": 0.5,
+                  "prideChange": 0.2,
+                  "prejudiceChange": 0.3,
                   "relationshipChanges": [
                     {
                       "npcName": "Elizabeth",

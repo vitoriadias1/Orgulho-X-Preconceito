@@ -14,29 +14,37 @@ public class DebugStatsPanel : MonoBehaviour
     public Button simulatePrideUpButton;
     public Button simulatePrejudiceUpButton;
 
-    private void Start()
+    private void OnEnable()
     {
-        UpdateUI();
-
+        // 🔥 Se inscreve nos eventos ANTES do Start para garantir que não perderá o sinal de Load do SaveSystem
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnStatsChanged += OnStatsChanged;
             GameManager.Instance.OnRelationshipChanged += OnRelationshipChanged;
         }
-
-        if (simulatePrideUpButton != null)
-            simulatePrideUpButton.onClick.AddListener(() => SimulateChoice(0.1f, 0f));
-        if (simulatePrejudiceUpButton != null)
-            simulatePrejudiceUpButton.onClick.AddListener(() => SimulateChoice(0f, 0.1f));
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnStatsChanged -= OnStatsChanged;
             GameManager.Instance.OnRelationshipChanged -= OnRelationshipChanged;
         }
+    }
+
+    private void Start()
+    {
+        // Força uma atualização inicial
+        UpdateUI();
+
+        if (simulatePrideUpButton != null)
+            simulatePrideUpButton.onClick.AddListener(() => SimulateChoice(0.1f, 0f));
+        if (simulatePrejudiceUpButton != null)
+            simulatePrejudiceUpButton.onClick.AddListener(() => SimulateChoice(0f, 0.1f));
+            
+        // 🔥 Garante uma atualização com delay mínimo para sincronizar perfeitamente com o Start do GameManager
+        Invoke(nameof(UpdateUI), 0.05f);
     }
 
     private void OnStatsChanged(float pride, float prejudice)
@@ -46,7 +54,6 @@ public class DebugStatsPanel : MonoBehaviour
 
     private void OnRelationshipChanged(string name, float value)
     {
-        // For debug we simply refresh UI; could display a list instead
         UpdateUI();
     }
 

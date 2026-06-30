@@ -62,8 +62,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // 🔥 CORRIGIDO: Agora chamamos diretamente o seu SaveSystem especialista!
-        // Ele vai tentar ler o arquivo JSON e carregar os dados. Se não houver save, inicia um Novo Jogo.
+        // 🔥 O SEGREDO: Carregamos o jogo no Start! 
+        // Isso garante que a UI e o Painel de Debug já acordaram e estão prontos para receber os dados salvos.
         if (!SaveSystem.LoadGame())
         {
             ResetarParaNovoJogo();
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour
         // Notifica a UI / Painel de Debug que o Orgulho e Preconceito mudaram
         OnStatsChanged?.Invoke(pride, prejudice);
 
-        // Tenta salvar o progresso automaticamente no arquivo JSON usando o SaveSystem
+        // Tenta salvar o progresso automaticamente no arquivo JSON
         try
         {
             SaveSystem.SaveGame(savedDialogueIndex);

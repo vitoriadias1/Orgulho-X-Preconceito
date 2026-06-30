@@ -27,8 +27,8 @@ MonoBehaviour:
       changeAmount: 0.4
   - choiceText: "[ERRADA] Ela \xE9 toler\xE1vel, mas n\xE3o suficientemente bonita
       para me tentar."
-    prideChange: 0.5
-    prejudiceChange: 0.5
+    prideChange: 0.2
+    prejudiceChange: 0.3
     relationshipChanges:
     - npcName: Elizabeth
-      changeAmount: -0.5
+      changeAmount: -0.3
